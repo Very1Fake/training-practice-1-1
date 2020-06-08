@@ -27,36 +27,36 @@ if __name__ == '__main__':
     digits: int = 0
     lines: list[Line] = []
 
-    if len(sys.argv) > 1 and sys.argv[1]:
+    if len(sys.argv) > 1 and sys.argv[1]:  # Check for first argument (path)
         path = sys.argv[1]
     else:
-        path = './TASK_1_Israpilov.txt'
+        path = './TASK_1_Israpilov.txt'  # Default path
 
     print('Analyzing')
 
-    if os.path.isfile(path):
+    if os.path.isfile(path):  # Check for file existance
         with open(path) as f:
-            for n, line in enumerate(f):
+            for n, line in enumerate(f):  # Lines enumeration (to get line index)
                 python: bool = False
-                for word in line.split(' '):
-                    for letter in word:
-                        if letter.lower() in 'йцукенгшщзхъфывапролджэячсмитьбюё':
+                for word in line.split(' '):  # Split line to words
+                    for letter in word:  # Split word to letters
+                        if letter.lower() in 'йцукенгшщзхъфывапролджэячсмитьбюё':  # Check for russian letters
                             russian_letters += 1
-                        elif letter.lower() in string.ascii_lowercase:
+                        elif letter.lower() in string.ascii_lowercase:  # Check for english letters
                             english_letters += 1
-                        elif letter in string.digits:
+                        elif letter in string.digits:  # Check for digits
                             digits += 1
 
                     if not python:
-                        if word.endswith('\n'):
+                        if word.endswith('\n'):  # Cut new line symbol
                             word = word[:-1]
-                        if word.startswith('"') or word.startswith("'"):
+                        if word.startswith('"') or word.startswith("'"):  # Cut opening quote
                             word = word[1:]
-                        if word.endswith('"') or word.endswith("'"):
+                        if word.endswith('"') or word.endswith("'"):  # Cut closing quote
                             word = word[:-1]
 
-                        if word.lower() == 'python':
-                            lines.append(Line(n + 1, len(line[:-1]) - line.count(' ')))
+                        if word.lower() == 'python':  # Check for python word
+                            lines.append(Line(n + 1, len(line[:-1]) - line.count(' ')))  # Save line symbols count
                             python = True
     else:
         print(f'File on this path ("{path}") does not exist')
