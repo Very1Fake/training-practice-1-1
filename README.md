@@ -6,5 +6,5 @@
  
 ### Usage
 ```bash
-$ python3.9 start [path_to_file]
+$ python3.9 task.py [path_to_file]
 ```
