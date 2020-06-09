@@ -1,3 +1,6 @@
+# Copyright 2020 Timur Israpilov
+# Licensed under the Apache License, Version 2.0
+
 import os
 import string
 import sys
