@@ -51,14 +51,7 @@ if __name__ == '__main__':
                             digits += 1
 
                     if not python:
-                        if word.endswith('\n'):  # Cut new line symbol
-                            word = word[:-1]
-                        if word.startswith('"') or word.startswith("'"):  # Cut opening quote
-                            word = word[1:]
-                        if word.endswith('"') or word.endswith("'"):  # Cut closing quote
-                            word = word[:-1]
-
-                        if word.lower() == 'python':  # Check for python word
+                        if 'python' in word.lower():  # Check for python word
                             lines.append(Line(n + 1, len(line[:-1]) - line.count(' ')))  # Save line symbols count
                             python = True
     else:
